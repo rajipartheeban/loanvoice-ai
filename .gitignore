@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+# Data: public reviews are downloaded with collect_more.py, not stored in the repo
+data/*.csv
+data/raw/
+*.db
+outputs/reviews_labelled.csv
+# Secrets and local backups
+.env
+*_backup.py
+README_old.md

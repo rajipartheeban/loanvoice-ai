@@ -1,0 +1,211 @@
+{
+  "fix_rate": 0.6,
+  "current_avg_rating": 4.63,
+  "rating_if_top3_fixed": 4.69,
+  "top3_sensitivity": {
+    "40%": 4.67,
+    "60%": 4.69,
+    "80%": 4.71
+  },
+  "rating_if_all_fixed": 4.72,
+  "roadmap": [
+    {
+      "rank": 1,
+      "issue": "rejection_no_reason",
+      "label": "Rejected / no new loan without reason",
+      "share": 0.019,
+      "avg_with": 1.36,
+      "avg_without": 4.69,
+      "gain": 0.037,
+      "effort": 2,
+      "priority": 0.0187,
+      "fix": "Show the main reason and the reapply date; a clear path back for customers who repaid on time"
+    },
+    {
+      "rank": 2,
+      "issue": "app_bugs",
+      "label": "App bugs / crashes",
+      "share": 0.006,
+      "avg_with": 2.16,
+      "avg_without": 4.65,
+      "gain": 0.01,
+      "effort": 2,
+      "priority": 0.0048,
+      "fix": "Crash monitoring, staged rollouts, hotfix within 48 hours of a bad release"
+    },
+    {
+      "rank": 3,
+      "issue": "repayment_credit_score",
+      "label": "Repayment & credit score problems",
+      "share": 0.006,
+      "avg_with": 1.22,
+      "avg_without": 4.65,
+      "gain": 0.012,
+      "effort": 3,
+      "priority": 0.0041,
+      "fix": "Manual pay before the due date, retry auto-debit before any penalty, update payment and CIBIL within 48 hours, auto-send NOC"
+    },
+    {
+      "rank": 4,
+      "issue": "recovery_calls",
+      "label": "Aggressive recovery calls",
+      "share": 0.006,
+      "avg_with": 1.03,
+      "avg_without": 4.65,
+      "gain": 0.012,
+      "effort": 3,
+      "priority": 0.004,
+      "fix": "Strict recovery-call policy, no contact-list access, complaint button in app"
+    },
+    {
+      "rank": 5,
+      "issue": "hidden_charges",
+      "label": "Hidden charges / high interest",
+      "share": 0.005,
+      "avg_with": 2.17,
+      "avg_without": 4.64,
+      "gain": 0.007,
+      "effort": 2,
+      "priority": 0.0036,
+      "fix": "Show total cost (fees, insurance, interest, APR) on one screen before e-sign"
+    },
+    {
+      "rank": 6,
+      "issue": "customer_support",
+      "label": "Poor customer support",
+      "share": 0.003,
+      "avg_with": 1.22,
+      "avg_without": 4.64,
+      "gain": 0.006,
+      "effort": 3,
+      "priority": 0.002,
+      "fix": "In-app ticket tracking, callback booking, first reply within 4 hours"
+    },
+    {
+      "rank": 7,
+      "issue": "disbursal_delay",
+      "label": "Disbursal delay",
+      "share": 0.003,
+      "avg_with": 1.23,
+      "avg_without": 4.64,
+      "gain": 0.006,
+      "effort": 5,
+      "priority": 0.0013,
+      "fix": "Live disbursal tracker with expected time, auto-escalate after 24 hours"
+    },
+    {
+      "rank": 8,
+      "issue": "kyc_verification",
+      "label": "KYC & documents",
+      "share": 0.001,
+      "avg_with": 1.78,
+      "avg_without": 4.63,
+      "gain": 0.001,
+      "effort": 4,
+      "priority": 0.0002,
+      "fix": "Clear KYC error messages, retry for selfie/OTP checks, DigiLocker as a fallback, faster document review"
+    }
+  ],
+  "by_app": {
+    "CASHe": {
+      "current_avg": 3.12,
+      "n_reviews": 1688,
+      "top_issues": [
+        {
+          "issue": "rejection_no_reason",
+          "label": "Rejected / no new loan without reason",
+          "share": 0.088,
+          "gain": 0.112
+        },
+        {
+          "issue": "disbursal_delay",
+          "label": "Disbursal delay",
+          "share": 0.065,
+          "gain": 0.084
+        },
+        {
+          "issue": "hidden_charges",
+          "label": "Hidden charges / high interest",
+          "share": 0.04,
+          "gain": 0.047
+        }
+      ],
+      "rating_if_top3_fixed": 3.37
+    },
+    "Fibe": {
+      "current_avg": 4.81,
+      "n_reviews": 40000,
+      "top_issues": [
+        {
+          "issue": "rejection_no_reason",
+          "label": "Rejected / no new loan without reason",
+          "share": 0.007,
+          "gain": 0.015
+        },
+        {
+          "issue": "repayment_credit_score",
+          "label": "Repayment & credit score problems",
+          "share": 0.006,
+          "gain": 0.014
+        },
+        {
+          "issue": "hidden_charges",
+          "label": "Hidden charges / high interest",
+          "share": 0.002,
+          "gain": 0.005
+        }
+      ],
+      "rating_if_top3_fixed": 4.85
+    },
+    "KreditBee": {
+      "current_avg": 4.62,
+      "n_reviews": 40000,
+      "top_issues": [
+        {
+          "issue": "rejection_no_reason",
+          "label": "Rejected / no new loan without reason",
+          "share": 0.031,
+          "gain": 0.064
+        },
+        {
+          "issue": "recovery_calls",
+          "label": "Aggressive recovery calls",
+          "share": 0.009,
+          "gain": 0.019
+        },
+        {
+          "issue": "repayment_credit_score",
+          "label": "Repayment & credit score problems",
+          "share": 0.004,
+          "gain": 0.007
+        }
+      ],
+      "rating_if_top3_fixed": 4.71
+    },
+    "Moneyview": {
+      "current_avg": 4.52,
+      "n_reviews": 40000,
+      "top_issues": [
+        {
+          "issue": "rejection_no_reason",
+          "label": "Rejected / no new loan without reason",
+          "share": 0.015,
+          "gain": 0.028
+        },
+        {
+          "issue": "app_bugs",
+          "label": "App bugs / crashes",
+          "share": 0.014,
+          "gain": 0.019
+        },
+        {
+          "issue": "repayment_credit_score",
+          "label": "Repayment & credit score problems",
+          "share": 0.008,
+          "gain": 0.015
+        }
+      ],
+      "rating_if_top3_fixed": 4.59
+    }
+  }
+}

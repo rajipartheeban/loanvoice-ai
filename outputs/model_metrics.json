@@ -1,0 +1,265 @@
+{
+  "model_version": "tfidf-stars-logreg-20261125-1529",
+  "n_train": 1500,
+  "n_test": 500,
+  "accuracy": 0.918,
+  "macro_f1": 0.6689,
+  "labels": [
+    "kyc_verification",
+    "rejection_no_reason",
+    "hidden_charges",
+    "disbursal_delay",
+    "customer_support",
+    "app_bugs",
+    "recovery_calls",
+    "repayment_credit_score",
+    "positive",
+    "other"
+  ],
+  "per_class": {
+    "kyc_verification": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1-score": 0.667,
+      "support": 2.0
+    },
+    "rejection_no_reason": {
+      "precision": 0.774,
+      "recall": 0.75,
+      "f1-score": 0.762,
+      "support": 32.0
+    },
+    "hidden_charges": {
+      "precision": 1.0,
+      "recall": 0.556,
+      "f1-score": 0.714,
+      "support": 9.0
+    },
+    "disbursal_delay": {
+      "precision": 0.4,
+      "recall": 0.667,
+      "f1-score": 0.5,
+      "support": 3.0
+    },
+    "customer_support": {
+      "precision": 0.667,
+      "recall": 0.5,
+      "f1-score": 0.571,
+      "support": 4.0
+    },
+    "app_bugs": {
+      "precision": 0.75,
+      "recall": 0.818,
+      "f1-score": 0.783,
+      "support": 11.0
+    },
+    "recovery_calls": {
+      "precision": 0.6,
+      "recall": 0.667,
+      "f1-score": 0.632,
+      "support": 9.0
+    },
+    "repayment_credit_score": {
+      "precision": 0.5,
+      "recall": 0.556,
+      "f1-score": 0.526,
+      "support": 9.0
+    },
+    "positive": {
+      "precision": 0.987,
+      "recall": 0.99,
+      "f1-score": 0.989,
+      "support": 394.0
+    },
+    "other": {
+      "precision": 0.536,
+      "recall": 0.556,
+      "f1-score": 0.545,
+      "support": 27.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      24,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2,
+      1,
+      3
+    ],
+    [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      9,
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      1,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      390,
+      3
+    ],
+    [
+      0,
+      6,
+      0,
+      2,
+      1,
+      0,
+      1,
+      0,
+      2,
+      15
+    ]
+  ],
+  "example_mistakes": [
+    {
+      "review_text": "can you check my profile with you and help me to fix my issues?",
+      "issue": "other",
+      "predicted": "rejection_no_reason"
+    },
+    {
+      "review_text": "it's too good",
+      "issue": "positive",
+      "predicted": "other"
+    },
+    {
+      "review_text": "\u092f\u0947 \u090f\u0915 \u092b\u094d\u0930\u0949\u0921 \u092e\u0928\u0940\u090f\u092a \u0939\u0948 \u091c\u094b \u092c\u093f\u0928\u093e \u092e\u093e\u0932\u093f\u0915 \u0915\u0940 \u0905\u0928\u0941\u092e\u0924\u093f \u0938\u0947 \u092a\u0948\u0938\u0947 \u0928\u093f\u0915\u093e\u0932 \u0932\u0947\u0924\u093e \u0939\u0948 \u092f\u093e \u0907\u0938\u0938\u0947 \u0915\u094b\u0908 \u092d\u0940 \u0928\u093f\u0915\u0932 \u0938\u0915\u0924\u093e \u0939\u0948 \u0915\u094b\u0908 \u092d\u0940 \u0907\u0938\u0915\u094b \u0921\u093e\u0909\u0928\u0932\u094b\u0921 \u092e\u0924 \u0915\u0930\u0928\u093e \u0914\u0930 \u0905\u092a\u0928\u0947 \u0938\u092d\u0940 \u0938\u093e\u0925\u093f\u092f\u094b\u0902 \u0938\u0947 \u092c\u094b\u0932\u0928\u093e \u0915\u093f\u0938\u0947 \u0921\u093e\u0909\u0928\u0932\u094b\u0921 \u0928\u093e \u0915\u0930\u0947\u0902 . \u0914\u0930 \u091c\u093f\u0924\u0928\u093e \u0939\u094b \u0938\u0915\u0947 \u0907\u0938\u0915\u0947 \u0916\u093f\u0932\u093e\u092b \u0936\u093f\u0915\u093e\u092f\u0924 \u0926\u0930\u094d\u091c \u0915\u0930\u0947\u0902",
+      "issue": "repayment_credit_score",
+      "predicted": "rejection_no_reason"
+    },
+    {
+      "review_text": "Call me sir",
+      "issue": "customer_support",
+      "predicted": "recovery_calls"
+    },
+    {
+      "review_text": "this app not working repayment time we facing we paying more amount",
+      "issue": "repayment_credit_score",
+      "predicted": "app_bugs"
+    },
+    {
+      "review_text": "Sharing my experience so other customers can be careful. I recently tried to foreclose my loan and was initially told that I would not have to pay any foreclosure charges. Later, I was told that foreclosure charges were applicable. I reached to everyone but nothing helps. Moneyview didn't take any accountability and asked only to connect with Jify and you cannot connect Jify by registered number because they know what they do. Jify customer support was worst.",
+      "issue": "hidden_charges",
+      "predicted": "repayment_credit_score"
+    },
+    {
+      "review_text": "very nice aap",
+      "issue": "positive",
+      "predicted": "other"
+    },
+    {
+      "review_text": "\u0915\u0943\u092a\u092f\u093e \u0915\u0930\u0915\u0947 \u092e\u0941\u091d\u0947 \u0915\u094b\u0932 \u0928\u093e \u0915\u0930\u0947\u0902",
+      "issue": "recovery_calls",
+      "predicted": "other"
+    },
+    {
+      "review_text": "very bad app this app propar not working and again let fees 3 days 500 against lone emi i m not happy for using this app",
+      "issue": "repayment_credit_score",
+      "predicted": "app_bugs"
+    },
+    {
+      "review_text": "bahut ghatiya 3 class aap hai koi bhi Sankari mat sajha karna frouad h koi customer care nhinkuch bhi kar lena in froudo se nhi bach paoge",
+      "issue": "other",
+      "predicted": "customer_support"
+    },
+    {
+      "review_text": "No provision for non gmail account. Why need email at all? Stop collecting email",
+      "issue": "other",
+      "predicted": "rejection_no_reason"
+    },
+    {
+      "review_text": "waste the app na apply pannathu personal loan ana property loan kullea tha poguthu waste",
+      "issue": "other",
+      "predicted": "rejection_no_reason"
+    }
+  ]
+}
