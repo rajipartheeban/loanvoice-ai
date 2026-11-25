@@ -1,5 +1,5 @@
 {
-  "model_version": "tfidf-stars-logreg-20261125-1529",
+  "model_version": "tfidf-stars-logreg-20261125-2122",
   "n_train": 1500,
   "n_test": 500,
   "accuracy": 0.918,

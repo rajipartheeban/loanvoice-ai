@@ -11,3 +11,4 @@ outputs/reviews_labelled.csv
 .env
 *_backup.py
 README_old.md
+.streamlit/secrets.toml

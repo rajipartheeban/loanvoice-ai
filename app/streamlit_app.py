@@ -26,7 +26,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 import streamlit as st
-
+# Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
+import os
+try:
+    if "DATABASE_URL" in st.secrets:
+        os.environ["DATABASE_URL"] = st.secrets["DATABASE_URL"]
+except Exception:   # no secrets file on your laptop - the normal environment variable is used
+    pass
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from loanvoice import db  # noqa: E402
 from loanvoice.assistant import ReviewSearch, data_summary, llm_answer, monthly_brief  # noqa: E402
