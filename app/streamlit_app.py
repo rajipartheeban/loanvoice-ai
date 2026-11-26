@@ -27,20 +27,35 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import streamlit as st
 # Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
+# Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
 import os
-try:
-    if "DATABASE_URL" in st.secrets:
-        os.environ["DATABASE_URL"] = st.secrets["DATABASE_URL"]
-except Exception:   # no secrets file on your laptop - the normal environment variable is used
-    pass
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from loanvoice import db  # noqa: E402
-from loanvoice.assistant import ReviewSearch, data_summary, llm_answer, monthly_brief  # noqa: E402
-from loanvoice.config import (DEFAULT_FIX_RATE, EFFORT_POINTS, ISSUES, OUTPUT_DIR,  # noqa: E402
-                              PROBLEM_ISSUES, PROPOSED_FIX)
-from loanvoice.impact import rating_gain_table  # noqa: E402
+import re
 
-st.set_page_config(page_title="LoanVoice AI", page_icon="💬", layout="wide")
+
+def clean_db_url(raw):
+    """Turn whatever was pasted into Secrets into a clean database address."""
+    s = "".join(str(raw).split())                  # an address never contains spaces or line breaks
+    s = s.strip("'\"")
+    i = s.find("postgres")
+    if i > 0:
+        s = s[i:]                                  # drop "psql '", "DATABASE_URL=", etc.
+    s = s.split("'")[0].split('"')[0]              # drop a closing quote and anything after it
+    return "postgresql+psycopg2://" + s.split("://")[-1]   # one clean prefix, even if pasted twice
+
+
+try:
+    raw = next((v for v in st.secrets.values() if isinstance(v, str) and "postgres" in v), None)
+except Exception:   # no secrets file on your laptop - the normal environment variable is used
+    raw = None
+if raw:
+    os.environ["DATABASE_URL"] = clean_db_url(raw)
+    try:
+        from sqlalchemy.engine import make_url
+        make_url(os.environ["DATABASE_URL"])
+    except Exception:
+        hidden = re.sub(r"://([^:/@]+):([^@]+)@", r"://\1:****@", os.environ["DATABASE_URL"])
+        st.error(f"The DATABASE_URL in Secrets is not a valid address. The app received (password hidden): {hidden}")
+        st.stop()
 
 # ---------------------------------------------------------------- colours
 BG, SURFACE, BORDER = "#161a19", "#1d2221", "#2c3331"
