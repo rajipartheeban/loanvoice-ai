@@ -4,7 +4,7 @@ I analysed **121,688 real Google Play reviews** of four Indian loan apps (Kredit
 with **Python, PostgreSQL, an AI classifier and statistics**, and turned the findings into a
 **prioritised 3-month product roadmap** and an **interactive Streamlit app**.
 
-**Live app:** _coming soon_ · **2-minute video:** _coming soon_ · **Business analysis:** [docs/business_analysis.md](docs/business_analysis.md)
+**Live app:** [loanvoice-ai.streamlit.app](https://loanvoice-ai.streamlit.app) · **2-minute video:** _coming soon_ · **Business analysis:** [docs/business_analysis.md](docs/business_analysis.md)
 
 ![Overview page](docs/images/overview.png)
 
