@@ -17,6 +17,8 @@ results in outputs/ written by `python pipeline.py run`.
 """
 import html
 import json
+import os
+import re
 import sys
 from pathlib import Path
 
@@ -26,12 +28,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 import streamlit as st
-# Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
-# Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
-import os
-import re
 
 
+# Online (Streamlit Community Cloud) the database address comes from the app's Secrets.
 def clean_db_url(raw):
     """Turn whatever was pasted into Secrets into a clean database address."""
     s = "".join(str(raw).split())                  # an address never contains spaces or line breaks
@@ -56,6 +55,15 @@ if raw:
         hidden = re.sub(r"://([^:/@]+):([^@]+)@", r"://\1:****@", os.environ["DATABASE_URL"])
         st.error(f"The DATABASE_URL in Secrets is not a valid address. The app received (password hidden): {hidden}")
         st.stop()
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from loanvoice import db  # noqa: E402
+from loanvoice.assistant import ReviewSearch, data_summary, llm_answer, monthly_brief  # noqa: E402
+from loanvoice.config import (DEFAULT_FIX_RATE, EFFORT_POINTS, ISSUES, OUTPUT_DIR,  # noqa: E402
+                              PROBLEM_ISSUES, PROPOSED_FIX)
+from loanvoice.impact import rating_gain_table  # noqa: E402
+
+st.set_page_config(page_title="LoanVoice AI", page_icon="💬", layout="wide")
 
 # ---------------------------------------------------------------- colours
 BG, SURFACE, BORDER = "#161a19", "#1d2221", "#2c3331"
@@ -672,12 +680,15 @@ def how_it_works():
     text = tc[0].text_input("Type a review", "Loan approved 5 days ago but money still not credited")
     stars = tc[1].select_slider("Star rating", options=[1, 2, 3, 4, 5], value=1)
     if text:
-        model = load_model()
-        proba = pd.Series(model.predict_proba(pd.DataFrame({"review_text": [text], "rating": [stars]}))[0],
-                          index=model.classes_).sort_values(ascending=False)
-        k = proba.index[0]
-        st.markdown(f'Predicted problem: <b style="color:{PCOLOR.get(k, TEXT)}">{html.escape(ISSUES[k])}</b> '
-                    f'({proba.iloc[0]:.0%} confidence)', unsafe_allow_html=True)
+        try:
+            model = load_model()
+            proba = pd.Series(model.predict_proba(pd.DataFrame({"review_text": [text], "rating": [stars]}))[0],
+                              index=model.classes_).sort_values(ascending=False)
+            k = proba.index[0]
+            st.markdown(f'Predicted problem: <b style="color:{PCOLOR.get(k, TEXT)}">{html.escape(ISSUES[k])}</b> '
+                        f'({proba.iloc[0]:.0%} confidence)', unsafe_allow_html=True)
+        except Exception as exc:   # e.g. model file missing or saved with another scikit-learn version
+            st.info(f"The model is not available here ({type(exc).__name__}). Run `python pipeline.py run` to create it.")
 
     st.subheader("Statistics")
     chi = stats["chi_square"]
